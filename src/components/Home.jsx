@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CountUp from 'react-countup'
+import ScrollTrigger from 'react-scroll-trigger'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -21,53 +23,74 @@ import dreamhouse from '../assets/dreamhouse.png'
 
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsArrowRight } from 'react-icons/bs'
+import { MdLocationPin } from 'react-icons/md'
 import { GiBathtub } from 'react-icons/gi'
 
 
 
 function Home() {
+    const [counterOn, setCounterOn] = useState(false)
+
   return (
     <div>
-        <div>
+        <div className='relative'>
+            <div className='absolute  right-0 z-[-10] bg-[#FF3F3F] w-1/4 h-[140vh]'></div>
+            <div className='absolute z-[-10] bg-black w-3/4 h-[140vh]'></div>
             <Header/>
-            <div className='flex flex-row justify-between gap-[100px] px-12 py-12'>
+            <div className='flex flex-row justify-between gap-[100px] px-16 py-16 mb-24 text-white'>
                 <div className='flex flex-col justify-evenly'>
                     <div className='flex flex-col justify-between gap-8'>
                         <h1 className='font-bold text-6xl'>The Best Place To Find Your Dream House</h1>
                         <p className=' opacity-70 font-extralight'>
                         We are real estate agency that willhelp you designing a modern and minimalist dream house, let’s discuss.
                         </p>
-
-                    </div>
-                    <div className='flex flex-row justify-between bottom-0'>
-                        <div className='flex flex-col gap-4'>
-                            <h1 className='font-bold text-4xl'>1200+</h1>
-                            <p className='text-sm opacity-70'>Premium Product</p>
-                        </div>
-                        <div className='flex flex-col gap-4'>
-                            <h1 className='font-bold text-4xl'>4500+</h1>
-                            <p className='text-sm opacity-70'>Happy Customer</p>
-                        </div>
-                        <div className='flex flex-col gap-4'>
-                            <h1 className='font-bold text-4xl'>240+</h1>
-                            <p className='text-sm opacity-70'>Award Winning</p>
+                        <div className='relative'>
+                            <input type="search" className='absolute bg-white outline-none focus:ring-transparent focus:ring-offset-transparent px-10 py-3 rounded-md w-[500px] text-black' placeholder='Search by Location' />
+                            <MdLocationPin className='absolute text-[#FF3F3F] text-3xl left-2 top-2'/>
+                            <button className='right-5 top-1 absolute bg-[#FF3F3F] px-5 py-2 rounded-md'>Search Now</button>
                         </div>
                     </div>
+                    <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
+                        <div className='flex flex-row justify-between bottom-0'>
+                            <div className='flex flex-col gap-4'>
+                                <h1 className='font-bold text-4xl'>
+                                    {counterOn &&
+                                        <CountUp start={0} end={1200} duration={5} delay={0}/>
+                                    }
+                                    <span className='text-[#FF3F3F]'>+</span>
+                                </h1>
+                                <p className='text-sm opacity-70'>Premium Product</p>
+                            </div>
+                            <div className='flex flex-col gap-4'>
+                                <h1 className='font-bold text-4xl'>
+                                    {counterOn &&
+                                        <CountUp start={0} end={4500} duration={5} delay={0}/>
+                                    }
+                                    <span className='text-[#FF3F3F]'>+</span>
+                                </h1>
+                                <p className='text-sm opacity-70'>Happy Customer</p>
+                            </div>
+                            <div className='flex flex-col gap-4'>
+                                <h1 className='font-bold text-4xl'>
+                                    {counterOn &&
+                                        <CountUp start={0} end={240} duration={5} delay={0}/>
+                                    }
+                                    <span className='text-[#FF3F3F]'>+</span>
+                                </h1>
+                                <p className='text-sm opacity-70'>Award Winning</p>
+                            </div>
+                        </div>
+                    </ScrollTrigger>
                 </div>
                 <img src={dreamhouse} alt="" />
             </div>
-            {/* <div>
-                <div className='z-50 flex flex-row'>
-                    <div className='bg-black w-3/4'></div>
-                    <div className='bg-[#FF3F3F] w-1/4'></div>
-                </div>
-            </div> */}
+            
         </div>
 
             <div>
                 <div className='relative'>
                     <div className='relative flex flex-col'>
-                        <div className='flex flex-row h-[500px] justify-between px-20 '>
+                        <div className='flex flex-row h-[600px] justify-between px-20 '>
                             <h1 className='font-bold text-6xl'>Popular Residents</h1>
                             <button className='text-sm flex flex-row justify-between gap-3'>
                                 Explore All
@@ -75,7 +98,7 @@ function Home() {
                             </button>
                         </div>
 
-                        <div className='bg-black px-16 py-[250px] gap-8 text-white '>
+                        <div className='bg-black px-16 py-[150px] gap-8 text-white '>
                             <div className='flex flex-row justify-between'>
                                 <div className='flex flex-col gap-4'>
                                     <h1 className='font-bold text-3xl'>John Doe</h1>
@@ -169,7 +192,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-row px-12 py-12 items-center justify-between'>
+                <div className='flex flex-row px-12 py-12 items-center justify-between gap-12'>
                     <img src={building} alt="" width={500}/>
                     
                     <div className='flex flex-col gap-8'>
@@ -228,7 +251,7 @@ function Home() {
                 </div>
                 <div className='flex flex-col gap-12 px-12 py-12'>
                     <h1 className='font-bold text-5xl mt-8 mb-8'>Our Blogs</h1>
-                    <div className='flex flex-row gap-8'>
+                    <div className='flex flex-row gap-8 items-center'>
                         <div className='flex flex-col gap-4'>
                             <img src={blog1} alt="" />
                             <div className='flex flex-col gap-4'>
@@ -243,7 +266,7 @@ function Home() {
                             <div className='flex flex-col gap-4'>
                                 <h1 className='opacity-50 text-sm'>14 March 2022</h1>
                                 <div className='bg-white/25 w-1/2 h-[1px]'></div>
-                                <h1 className='font-bold text-2xl'>Hoe I Cretively Got Into Real Restate (Twice)</h1>
+                                <h1 className='font-bold text-2xl'>How I Creatively Got Into Real Restate (Twice)</h1>
                                 <button className='w-[35%] bg-[#FF3F3F] px-5 py-2 rounded-md text-white font-bold hover:bg-black '>Read More</button>
                             </div>
                         </div>
