@@ -17,6 +17,7 @@ import amazon from '../assets/amazon.png'
 import adobe from '../assets/adobe.png'
 import SquareFeet from '../assets/SquareFeet.png'
 import Bed from '../assets/bed.png'
+import dreamhouse from '../assets/dreamhouse.png'
 
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BsArrowRight } from 'react-icons/bs'
@@ -29,12 +30,46 @@ function Home() {
     <div>
         <div>
             <Header/>
+            <div className='flex flex-row justify-between gap-[100px] px-12 py-12'>
+                <div className='flex flex-col justify-evenly'>
+                    <div className='flex flex-col justify-between gap-8'>
+                        <h1 className='font-bold text-6xl'>The Best Place To Find Your Dream House</h1>
+                        <p className=' opacity-70 font-extralight'>
+                        We are real estate agency that willhelp you designing a modern and minimalist dream house, let’s discuss.
+                        </p>
+
+                    </div>
+                    <div className='flex flex-row justify-between bottom-0'>
+                        <div className='flex flex-col gap-4'>
+                            <h1 className='font-bold text-4xl'>1200+</h1>
+                            <p className='text-sm opacity-70'>Premium Product</p>
+                        </div>
+                        <div className='flex flex-col gap-4'>
+                            <h1 className='font-bold text-4xl'>4500+</h1>
+                            <p className='text-sm opacity-70'>Happy Customer</p>
+                        </div>
+                        <div className='flex flex-col gap-4'>
+                            <h1 className='font-bold text-4xl'>240+</h1>
+                            <p className='text-sm opacity-70'>Award Winning</p>
+                        </div>
+                    </div>
+                </div>
+                <img src={dreamhouse} alt="" />
+            </div>
+            {/* <div>
+                <div className='z-50 flex flex-row'>
+                    <div className='bg-black w-3/4'></div>
+                    <div className='bg-[#FF3F3F] w-1/4'></div>
+                </div>
+            </div> */}
+        </div>
+
             <div>
                 <div className='relative'>
                     <div className='relative flex flex-col'>
-                        <div className='flex flex-row justify-between h-[500px]'>
+                        <div className='flex flex-row h-[500px] justify-between px-20 '>
                             <h1 className='font-bold text-6xl'>Popular Residents</h1>
-                            <button className='text-sm'>
+                            <button className='text-sm flex flex-row justify-between gap-3'>
                                 Explore All
                                 <BsArrowRight className='text-xl'/>
                             </button>
@@ -63,7 +98,7 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className='flex flex-row justify-between absolute top-[10%] m-16 gap-8'>
+                    <div className='flex flex-row justify-between absolute top-[8%] m-16 gap-8'>
                         <div className='rounded-md bg-white flex flex-col gap-4 shadow-xl shadow-black/20'>
                             <img src={house1} alt="" />
                             <div className='flex flex-col gap-4 px-8 py-8'>
@@ -234,7 +269,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-        </div>
+        
         <Footer/>
     </div>
   )
